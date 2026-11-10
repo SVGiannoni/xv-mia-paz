@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mis XV · Mía Paz</title>
+  <meta name="description" content="Te invito a celebrar mis 15 el sábado 26 de diciembre de 2026 a las 21 hs en Eventos Los Tres Hermanos, Merlo.">
+  <meta name="theme-color" content="#0c0507">
+
+  <!-- Open Graph (vista previa al compartir por WhatsApp / redes) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Mis XV · Mía Paz">
+  <meta property="og:description" content="Sábado 26 de diciembre de 2026 · 21 hs · Eventos Los Tres Hermanos, Merlo">
+  <meta property="og:url" content="https://svgiannoni.github.io/xv-mia-paz/">
+  <meta property="og:image" content="https://svgiannoni.github.io/xv-mia-paz/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Invitación a los XV de Mía Paz">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&family=Pinyon+Script&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Sprite de ornamentos y gradientes reutilizables -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="arch-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f1dcae"/>
+        <stop offset=".55" stop-color="#d8b878" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#d8b878" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="disc-grad" cx=".5" cy=".42" r=".6">
+        <stop offset="0" stop-color="#3a0d18" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#0c0507" stop-opacity=".2"/>
+      </radialGradient>
+    </defs>
+    <symbol id="ornament" viewBox="0 0 240 24">
+      <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+        <path d="M2 12H94M146 12H238"/>
+        <path d="M94 12c6 0 9-6 15-4M146 12c-6 0-9-6-15-4M94 12c6 0 9 6 15 4M146 12c-6 0-9 6-15 4"/>
+      </g>
+      <path d="M120 3l7 9-7 9-7-9z" fill="currentColor" opacity=".9"/>
+      <circle cx="102" cy="12" r="1.4" fill="currentColor"/>
+      <circle cx="138" cy="12" r="1.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="sparkle" viewBox="0 0 24 24">
+      <path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12z" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <canvas id="sparkles" aria-hidden="true"></canvas>
+
+  <!-- Botón de música (se muestra sólo si existe assets/musica.mp3) -->
+  <button class="music-btn" id="music-toggle" type="button" aria-pressed="false" aria-label="Reproducir música" hidden>
+    <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+  </button>
+  <audio id="bg-music" preload="none" loop></audio>
+
+  <!-- 1 · PORTADA -->
+  <header class="hero" id="inicio">
+    <svg class="hero__arch" viewBox="0 0 320 560" aria-hidden="true">
+      <path class="arch-line" pathLength="1" d="M24 560V180a136 136 0 0 1 272 0v380"/>
+      <path class="arch-line arch-line--inner" pathLength="1" d="M38 560V184a122 122 0 0 1 244 0v376"/>
+      <use class="arch-star" href="#sparkle" x="148" y="12" width="24" height="24"/>
+    </svg>
+
+    <div class="hero__content">
+      <p class="hero__kicker rise" style="--d:.3s">
+        <span class="sr-only">Mis quince</span>
+        <span class="hero__mis" aria-hidden="true">Mis</span>
+        <span class="hero__xv" aria-hidden="true">XV</span>
+      </p>
+      <h1 class="hero__name rise" style="--d:.7s" data-bind="nombre">Mía Paz</h1>
+      <p class="hero__date rise" style="--d:1.1s">
+        <span class="line" aria-hidden="true"></span>
+        <span aria-hidden="true" data-bind="fecha-corta">26 · DIC · 2026 · 21 HS</span>
+        <span class="sr-only" data-bind="fecha-larga-hora">Sábado 26 de diciembre de 2026 · 21:00 hs</span>
+        <span class="line line--r" aria-hidden="true"></span>
+      </p>
+    </div>
+
+    <a class="scroll-cue rise" style="--d:1.6s" href="#cuenta" aria-label="Deslizá para ver la invitación">
+      <span class="scroll-cue__text" aria-hidden="true">Deslizá</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <!-- 3 · CUENTA REGRESIVA -->
+    <section class="section" id="cuenta" aria-labelledby="cuenta-title">
+      <p class="kicker reveal">Cuenta regresiva</p>
+      <h2 class="title reveal" id="cuenta-title">Falta muy poco</h2>
+
+      <div class="countdown reveal" role="timer" aria-live="off">
+        <svg class="countdown__ring" viewBox="0 0 320 320" aria-hidden="true">
+          <circle cx="160" cy="160" r="156" class="ring ring--faint"/>
+          <circle cx="160" cy="160" r="146" class="ring ring--main" fill="url(#disc-grad)"/>
+          <g class="ring-spin"><circle cx="160" cy="160" r="134" class="ring ring--dots"/></g>
+          <use href="#sparkle" x="152" y="6" width="16" height="16" class="ring-star"/>
+          <use href="#sparkle" x="152" y="298" width="16" height="16" class="ring-star"/>
+          <use href="#sparkle" x="6" y="152" width="16" height="16" class="ring-star"/>
+          <use href="#sparkle" x="298" y="152" width="16" height="16" class="ring-star"/>
+        </svg>
+
+        <div class="countdown__units" id="countdown-units" aria-hidden="true">
+          <div class="unit"><span class="unit__num" data-unit="days">--</span><span class="unit__label">Días</span></div>
+          <div class="unit"><span class="unit__num" data-unit="hours">--</span><span class="unit__label">Horas</span></div>
+          <div class="unit"><span class="unit__num" data-unit="minutes">--</span><span class="unit__label">Min</span></div>
+          <div class="unit"><span class="unit__num" data-unit="seconds">--</span><span class="unit__label">Seg</span></div>
+        </div>
+        <p class="countdown__done" id="countdown-done" hidden>¡Hoy es el gran día!</p>
+        <p class="sr-only" id="countdown-sr"></p>
+      </div>
+
+      <p class="countdown__caption reveal" data-bind="fecha-larga-hora">Sábado 26 de diciembre de 2026 · 21:00 hs</p>
+    </section>
+
+    <!-- 4 · FRASE -->
+    <section class="section quote" aria-label="Frase de la cumpleañera">
+      <svg class="ornament reveal" aria-hidden="true"><use href="#ornament"/></svg>
+      <blockquote class="quote__text reveal">
+        <p>Quince años de sueños, risas y abrazos me trajeron hasta acá. Esta noche quiero brillar junto a quienes hicieron de cada paso un recuerdo.</p>
+      </blockquote>
+      <p class="quote__sign reveal" data-bind="nombre">Mía Paz</p>
+      <svg class="ornament ornament--flip reveal" aria-hidden="true"><use href="#ornament"/></svg>
+    </section>
+
+    <!-- 5 · LUGAR -->
+    <section class="section" id="lugar" aria-labelledby="lugar-title">
+      <div class="icon-badge reveal" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M24 43s-13-12.6-13-23a13 13 0 0 1 26 0c0 10.4-13 23-13 23z"/><circle cx="24" cy="20" r="4.5"/></svg>
+      </div>
+      <p class="kicker reveal">Dónde</p>
+      <h2 class="title reveal" id="lugar-title">Lugar</h2>
+      <div class="frame reveal">
+        <p class="venue" data-bind="lugar-nombre">Eventos Los Tres Hermanos</p>
+        <address class="address" data-bind="lugar-direccion">Balbastro 1448, Merlo, Buenos Aires</address>
+      </div>
+      <a class="btn btn--gold reveal" id="btn-mapa" href="https://share.google/KwmaiojpbRXfyTquH" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg>
+        Cómo llegar<span class="sr-only"> (se abre en una pestaña nueva)</span>
+      </a>
+    </section>
+
+    <!-- 6 · AGENDAR -->
+    <section class="section" id="agendar" aria-labelledby="agendar-title">
+      <div class="icon-badge reveal" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><rect x="8" y="11" width="32" height="29" rx="3"/><path d="M8 19h32M16 7v8M32 7v8"/><path class="fill" d="M24 24.5l1.6 3.4 3.7.4-2.8 2.5.8 3.6-3.3-1.9-3.3 1.9.8-3.6-2.8-2.5 3.7-.4z"/></svg>
+      </div>
+      <h2 class="title reveal" id="agendar-title">Guardá la fecha</h2>
+      <p class="text reveal">Agendala para no perderte ningún momento de esta noche tan especial.</p>
+      <a class="btn btn--outline reveal" id="btn-calendario" href="#" target="_blank" rel="noopener noreferrer">
+        Agendar en el calendario<span class="sr-only"> (se abre en una pestaña nueva)</span>
+      </a>
+    </section>
+
+    <!-- 7 · CONFIRMAR ASISTENCIA -->
+    <section class="section" id="confirmar" aria-labelledby="confirmar-title">
+      <div class="icon-badge reveal" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><rect x="6" y="12" width="36" height="25" rx="2.5"/><path d="M6.5 13.5L24 27l17.5-13.5"/><path class="fill" d="M24 9.5s-4.4-2.8-4.4-5.5a2.3 2.3 0 0 1 4.4-.9 2.3 2.3 0 0 1 4.4.9c0 2.7-4.4 5.5-4.4 5.5z" transform="translate(0 25.5)"/></svg>
+      </div>
+      <h2 class="title reveal" id="confirmar-title">Confirmar asistencia</h2>
+      <p class="text reveal">Me haría muy feliz compartir esta noche con vos. Contame si vas a estar.</p>
+      <p class="deadline reveal" id="rsvp-deadline">Confirmá antes del <strong data-bind="confirmar-fecha"></strong></p>
+      <a class="btn btn--gold reveal" id="btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4A8 8 0 1 1 20 11.6z"/></svg>
+        Confirmar por WhatsApp<span class="sr-only"> (se abre WhatsApp)</span>
+      </a>
+    </section>
+
+    <!-- 8 · DRESS CODE -->
+    <section class="section" id="dress-code" aria-labelledby="dress-title">
+      <div class="icon-badge reveal" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M19.5 5l-1 8.5M28.5 5l1 8.5"/><path d="M18.5 13.5q5.5 3.5 11 0l-2 8.5h-7z"/><path d="M20.5 22L12 42q12 3.5 24 0l-8.5-20"/><path class="fill" d="M24 20.6l-2.6-1.6v3.2zM24 20.6l2.6-1.6v3.2z"/></svg>
+      </div>
+      <h2 class="title reveal" id="dress-title">Dress code</h2>
+      <p class="dress__main reveal">Elegante</p>
+      <div class="dress__note reveal">
+        <span class="swatches" aria-hidden="true"><i class="sw sw--red"></i><i class="sw sw--wine"></i></span>
+        <p>Reservado el rojo y el bordó para la cumpleañera</p>
+      </div>
+    </section>
+
+    <!-- 9 · REGALOS -->
+    <section class="section" id="regalos" aria-labelledby="regalos-title">
+      <div class="icon-badge reveal" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><rect x="8" y="19" width="32" height="22" rx="1.5"/><rect x="6" y="13" width="36" height="6" rx="1.5"/><path d="M24 13v28"/><path d="M24 13c-3-6-11-7-11-2.5 0 3 6 2.5 11 2.5zM24 13c3-6 11-7 11-2.5 0 3-6 2.5-11 2.5z"/></svg>
+      </div>
+      <h2 class="title reveal" id="regalos-title">Regalos</h2>
+      <p class="text reveal">Tu presencia es mi mejor regalo. Si además querés hacerme un presente, te dejo mi alias:</p>
+      <div class="frame alias reveal">
+        <span class="kicker">Alias</span>
+        <p class="alias__value" id="alias-value" data-bind="alias">priscila.ppz</p>
+      </div>
+      <button class="btn btn--outline reveal" id="btn-copiar" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+        Copiar alias
+      </button>
+    </section>
+  </main>
+
+  <!-- 10 · CIERRE -->
+  <footer class="section closing">
+    <svg class="ornament reveal" aria-hidden="true"><use href="#ornament"/></svg>
+    <p class="closing__title reveal">¡Te espero!</p>
+    <p class="closing__name reveal" data-bind="nombre">Mía Paz</p>
+    <svg class="closing__star reveal" viewBox="0 0 24 24" aria-hidden="true"><use href="#sparkle"/></svg>
+    <p class="closing__date reveal" data-bind="fecha-numerica">26 · 12 · 2026</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
